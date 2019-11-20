@@ -1,0 +1,52 @@
+{
+    "name": "tomsq/image-manager",
+    "description": "",
+    "keywords": [
+        "tomsq",
+        "image-manager"
+    ],
+    "homepage": "https://github.com/tomsq/image-manager",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Tomas Sek",
+            "email": "finixit@email.cz",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.8.*",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tomsq\\ImageManager\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tomsq\\ImageManager\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tomsq\\ImageManager\\ImageManagerServiceProvider"
+            ],
+            "aliases": {
+                "ImageManager": "Tomsq\\ImageManager\\ImageManagerFacade"
+            }
+        }
+    }
+}
