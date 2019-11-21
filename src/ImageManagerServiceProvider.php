@@ -11,12 +11,9 @@ class ImageManagerServiceProvider extends ServiceProvider
         // Load Package Routes
         $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
 
-        // Load Package Migrations
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
-
         // Publish files
         $this->publishes([
-            __DIR__ . '/config/image-manager.php' => public_path('../config/image-manager.php'),
+            __DIR__ . '/config/image-manager.php' => config_path('/image-manager.php'),
         ], 'config');
 
 
@@ -25,12 +22,14 @@ class ImageManagerServiceProvider extends ServiceProvider
                 __DIR__ . '/database/migrations/create_images_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_images_table.php'),
             ], 'migrations');
         }
-
-        app()->bind('ImageManager', function () {
-            return new ImageManager();
-        });
     }
 
     public function register()
-    { }
+    {
+        app()->bind('ImageManager', function () {
+            return new ImageManager();
+        });
+
+        $this->mergeConfigFrom(__DIR__.'/config/image-manager.php', 'image-manager');
+    }
 }
