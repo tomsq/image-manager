@@ -16,6 +16,8 @@ class Image extends Model
         'file_name',
         'file_extension',
         'file_size',
+        'parent_id',
+        'type',
         'model_id',
         'model_type',
     ];
