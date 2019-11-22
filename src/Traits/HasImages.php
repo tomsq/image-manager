@@ -4,6 +4,8 @@ namespace Tomsq\ImageManager\Traits;
 
 use Tomsq\ImageManager\Models\Images\Image;
 use Tomsq\ImageManager\ImageManager;
+use Illuminate\Support\Facades\Storage;
+
 trait HasImages
 {
     public function images()
@@ -21,5 +23,12 @@ trait HasImages
     public function createImage($file, array $data, array $options = [])
     {
         ImageManager::handleImage($file, $this, $data, $options);
+    }
+
+    public function deleteImages()
+    {
+        $image = $this->images()->first();
+        $this->images()->delete();
+        Storage::disk('public')->deleteDirectory($image->file_name);
     }
 }

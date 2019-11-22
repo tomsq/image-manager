@@ -4,7 +4,6 @@ namespace Tomsq\ImageManager;
 
 use Intervention\Image\Facades\Image as InterventionImage;
 use Illuminate\Support\Facades\Storage;
-use Tomsq\ImageManager\Models\Images\Image;
 
 class ImageManager
 {
@@ -39,10 +38,11 @@ class ImageManager
             function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
-            })->stream(
-                'jpg',
-                90
-            );
+            }
+        )->stream(
+            'jpg',
+            90
+        );
     }
 
     private static function makeThumbImage($file, $options)
@@ -53,10 +53,11 @@ class ImageManager
             function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
-            })->stream(
-                'jpg',
-                85
-            );
+            }
+        )->stream(
+            'jpg',
+            85
+        );
     }
 
     private static function createModel($model, $imageData, FilePath $path, $parentId = null)

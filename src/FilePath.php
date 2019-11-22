@@ -17,12 +17,12 @@ class FilePath
 
     public function getFullPath()
     {
-        return $this->dirName . '/' .$this->imageType . '.' . $this->extension;
+        return $this->dirName . '/' . $this->imageType . '.' . $this->extension;
     }
 
     public function getFileName()
     {
-        return $this->dirName . '/' . $this->imageType;
+        return $this->dirName;
     }
 
     public function getDirName()

@@ -26,4 +26,9 @@ class Image extends Model
     {
         return $this->morphTo();
     }
+
+    public function getFullPath()
+    {
+        return $this->file_name . '/' . $this->type . '.' . $this->file_extension;
+    }
 }
