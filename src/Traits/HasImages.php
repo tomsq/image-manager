@@ -4,7 +4,6 @@ namespace Tomsq\ImageManager\Traits;
 
 use Tomsq\ImageManager\Models\Images\Image;
 use Tomsq\ImageManager\ImageManager;
-
 trait HasImages
 {
     public function images()
@@ -21,19 +20,6 @@ trait HasImages
      */
     public function createImage($file, array $data, array $options = [])
     {
-        ImageManager::handleImage($file);
-
-        // return $this->images()->create([
-        //     'file_name' => $storedData['file_name'],
-        //     'file_extension' => $storedData['file_extension'],
-        //     'file_size' => $storedData['file_size'],
-        //     'created_by' => array_key_exists('created_by', $data) ? $data['created_by'] : null,
-        //     'short_description' => array_key_exists('short_description', $data) ? $data['short_description'] : null,
-        //     'description' => array_key_exists('description', $data) ? $data['description'] : null,
-        //     'name' => array_key_exists('short_description', $data) ? $data['name'] : null
-        // ]);
+        ImageManager::handleImage($file, $this, $data, $options);
     }
-
-    public function createImages()
-    { }
 }
